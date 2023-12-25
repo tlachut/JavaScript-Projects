@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Symulacja losowania totolotka</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter&family=Source+Sans+3&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="kontener">
+            <h1>Symulacja losowania totolotka</h1>
+            <div class="instrukcja">
+                <h2>Instrukcja:</h2>
+                <ul>
+                    <li>
+                        Do pól oznaczonych liczbami 1-6 wprowadź liczby z
+                        zakresu 1-49. Możesz je również wylosować za pomocą
+                        przycisku "Losowe".
+                    </li>
+                    <li>
+                        Wprowadzone liczby nie mogą się powtarzać - wszystkie
+                        muszą być unikatowe.
+                    </li>
+                    <li>
+                        Poprzez naciśnięcie przycisku "Zatwierdź", wprowadzone
+                        liczby zostają zatwierdzone, a program losuje 6 własnych
+                        i przeprowadzona zostaje symulacja losowania.
+                    </li>
+                    <li>
+                        Przycisk "Reset" resetuje liczby wprowadzone przez
+                        użytkownika i wylosowane przez komputer.
+                    </li>
+                    <li>
+                        W kolumnie "Statystyki" pokazana jest ilość trafionych
+                        liczb.
+                    </li>
+                </ul>
+            </div>
+            <div class="glowny">
+                <div class="liczbyUzytkownika">
+                    <h2>Twoje liczby:</h2>
+                    <table style="margin-bottom: 10px">
+                        <tr>
+                            <th>Liczba 1.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole1"
+                                    name="pole1"
+                                    class="liczbyUzytkownikaPole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="1...49"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Liczba 2.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole2"
+                                    name="pole2"
+                                    class="liczbyUzytkownikaPole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="1...49"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Liczba 3.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole3"
+                                    name="pole3"
+                                    class="liczbyUzytkownikaPole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="1...49"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Liczba 4.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole4"
+                                    name="pole4"
+                                    class="liczbyUzytkownikaPole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="1...49"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Liczba 5.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole5"
+                                    name="pole5"
+                                    class="liczbyUzytkownikaPole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="1...49"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Liczba 6.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole6"
+                                    name="pole6"
+                                    class="liczbyUzytkownikaPole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="1...49"
+                                />
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="przyciski">
+                        <input
+                            type="button"
+                            value="Losowe"
+                            id="wylosujBtn"
+                            onclick="losujUzytkownika()"
+                        />
+                        <input
+                            type="button"
+                            value="Reset"
+                            id="resetBtn"
+                            onclick="reset()"
+                        />
+                        <input
+                            type="button"
+                            value="Zatwierdź"
+                            id="zatwierdzBtn"
+                            onclick="zatwierdz()"
+                        />
+                    </div>
+                </div>
+                <div class="liczbyWylosowane">
+                    <h2>Wylosowane liczby:</h2>
+                    <table style="margin-bottom: 10px">
+                        <tr>
+                            <th>Liczba 1.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole2_1"
+                                    name="pole2_1"
+                                    class="liczbyWylosowanePole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="-"
+                                    readonly
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Liczba 2.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole2_2"
+                                    name="pole2_2"
+                                    class="liczbyWylosowanePole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="-"
+                                    readonly
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Liczba 3.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole2_3"
+                                    name="pole2_3"
+                                    class="liczbyWylosowanePole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="-"
+                                    readonly
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Liczba 4.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole2_4"
+                                    name="pole2_4"
+                                    class="liczbyWylosowanePole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="-"
+                                    readonly
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Liczba 5.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole2_5"
+                                    name="pole2_5"
+                                    class="liczbyWylosowanePole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="-"
+                                    readonly
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Liczba 6.</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole2_6"
+                                    name="pole2_6"
+                                    class="liczbyWylosowanePole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="-"
+                                    readonly
+                                />
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="przyciski">
+                        <input
+                            type="button"
+                            value="Reset Statystyk"
+                            id="resetStatystykBtn"
+                            onclick="resetStatystyk()"
+                        />
+                    </div>
+                </div>
+                <div class="statystyki">
+                    <h2>Statystyki:</h2>
+                    <table>
+                        <tr>
+                            <th>Nr gry:</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole3_8"
+                                    name="pole3_8"
+                                    class="liczbyWylosowanePole"
+                                    min="1"
+                                    max="49"
+                                    placeholder="-"
+                                    readonly
+                                    value="0"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Traf. 0:</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole3_1"
+                                    name="pole3_1"
+                                    class="liczbyWylosowanePole"
+                                    placeholder="-"
+                                    readonly
+                                    value="0"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Traf. 1:</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole3_2"
+                                    name="pole3_2"
+                                    class="liczbyWylosowanePole"
+                                    placeholder="-"
+                                    readonly
+                                    value="0"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Traf. 2:</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole3_3"
+                                    name="pole3_3"
+                                    class="liczbyWylosowanePole"
+                                    placeholder="-"
+                                    readonly
+                                    value="0"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Traf. 3:</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole3_4"
+                                    name="pole3_4"
+                                    class="liczbyWylosowanePole"
+                                    placeholder="-"
+                                    readonly
+                                    value="0"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Traf. 4:</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole3_5"
+                                    name="pole3_5"
+                                    class="liczbyWylosowanePole"
+                                    placeholder="-"
+                                    readonly
+                                    value="0"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Traf. 5:</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole3_6"
+                                    name="pole3_6"
+                                    class="liczbyWylosowanePole"
+                                    placeholder="-"
+                                    readonly
+                                    value="0"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Traf. 6:</th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="pole3_7"
+                                    name="pole3_7"
+                                    class="liczbyWylosowanePole"
+                                    placeholder="-"
+                                    readonly
+                                    value="0"
+                                />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tekst">
+                <h2 style="margin-bottom: 0px" id="wynik">
+                    Liczby, które się powtarzają:
+                </h2>
+            </div>
+            <div class="tekst">
+                <h2 style="margin-top: 0px" id="ileTrafiono">Trafiono:</h2>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
