@@ -1,0 +1,80 @@
+body {
+    background-color: #1c1c1e;
+    color: #fffbf1;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.kontener {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#zapalki {
+    display: flex;
+    flex-direction: row;
+}
+
+#zapalki > div {
+    border: #fffbf1 solid 5px;
+    padding: 20px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+#zapalki > div:hover {
+    background-color: #252528;
+}
+
+#info {
+    text-align: center;
+}
+
+#zasady {
+    text-align: left;
+}
+
+input[type="text"],
+input[type="number"] {
+    height: 25px;
+    text-align: center;
+    font-size: larger;
+    width: 150px;
+}
+
+#liczbaZapalek {
+    height: 35px;
+}
+
+input[type="button"] {
+    margin: 5px;
+    padding: 20px;
+    width: 150px;
+    color: #3d3b3b;
+    background-color: #fffbf1;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+input[type="button"]:hover {
+    background-color: #c6c3bb;
+    cursor: pointer;
+}
+
+#pokazZasady {
+    padding: 10px 20px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#zasady {
+    padding: 10px;
+    background-color: #2f2f2d;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    border: #fffbf1 solid 2px;
+    display: none;
+}
