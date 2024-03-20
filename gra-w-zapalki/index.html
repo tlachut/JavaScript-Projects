@@ -7,5 +7,42 @@
         <link rel="stylesheet" href="style.css" />
         <script src="script.js" defer></script>
     </head>
-    <body></body>
+    <body>
+        <div class="kontener">
+            <h1>Gra w zapałki</h1>
+            <div id="zapalki">
+                <div id="jedna">
+                    <img src="grafika/zapalka.png" alt="Zapałka" />
+                </div>
+                <div id="dwie">
+                    <img src="grafika/zapalka.png" alt="Zapałka" />
+                    <img src="grafika/zapalka.png" alt="Zapałka" />
+                </div>
+                <div id="trzy">
+                    <img src="grafika/zapalka.png" alt="Zapałka" />
+                    <img src="grafika/zapalka.png" alt="Zapałka" />
+                    <img src="grafika/zapalka.png" alt="Zapałka" />
+                </div>
+            </div>
+            <div id="info">
+                <div>Aby ropocząć grę, naciśnij przycisk "Rozpocznij grę".</div>
+                <input type="button" value="Rozpocznij grę" />
+                <div id="kolejInfo"></div>
+                <label for="liczbaZapalek">Liczba zapałek: </label>
+                <input type="number" name="liczbaZapalek" id="liczbaZapalek" readonly/>
+                <label for="nazwaGracza1">Nazwa gracza nr 1: </label>
+                <input type="text" name="nazwaGracza1" id="nazwaGracza1" readonly/>
+                <label for="nazwaGracza1">Nazwa gracza nr 2: </label>
+                <input type="text" name="nazwaGracza1" id="nazwaGracza1" readonly/>
+                <input type="button" value="Pokaż zasady" />
+                <div id="zasady">
+                    Zasady gry: <br />
+                    - Gra jest dla dwóch graczy. <br />
+                    - Rozkładamy na stole pewną liczbę zapałek. <br />
+                    - Gracze na przemian biorą 1, 2, lub 3 zapałki. <br />
+                    - Przegrywa gracz, który wykona ostatni ruch (weźmie ostatnią/e zapałkę/i ze stołu). <br />
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
