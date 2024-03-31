@@ -11,24 +11,34 @@ const nazwaGracza2Input = document.querySelector("#nazwaGracza2");
 
 const pokazZasadyPrzycisk = document.querySelector("#pokazZasady");
 const zasady = document.querySelector("#zasady");
+const infoSchowaj = document.querySelector("#infoSchowaj");
 
 var liczbaZapalek;
 var nazwaGracza1;
 var nazwaGracza2;
+var czyStart = false;
 
 function rozpocznijGre() {
+    czyStart = true;
     liczbaZapalek = parseInt(prompt("Wprowadź liczbę zapałek: "));
     while (isNaN(liczbaZapalek)) {
-        liczbaZapalek = parseInt(prompt("Błąd!\nWprowadź liczbę zapałek: "));
+        liczbaZapalek = parseInt(prompt("Błąd!\nWprowadź poprawną liczbę zapałek: "));
     }
     liczbaZapalekInput.value = liczbaZapalek;
     nazwaGracza1 = prompt("Wprowadź nazwę gracza nr 1: ");
+    while (nazwaGracza1 == "") {
+        nazwaGracza1 = prompt("Błąd!\nNazwa gracza nie może być pusta.\nWprowadź nazwę gracza nr 1: ");
+    }
     nazwaGracza1Input.value = nazwaGracza1;
     nazwaGracza2 = prompt("Wprowadź nazwę gracza nr 2: ");
+    while (nazwaGracza2 == "") {
+        nazwaGracza2 = prompt("Błąd!\nNazwa gracza nie może być pusta.\nWprowadź nazwę gracza nr 2: ");
+    }
     nazwaGracza2Input.value = nazwaGracza2;
     startInfo.style.display = "none";
     rozpocznijGrePrzycisk.style.display = "none";
-    kolejInfo.innerHTML = "Kolej gracza: <b>" + nazwaGracza1 + "<b />";
+    kolejInfo.innerHTML = "<h3>Kolej gracza: " + nazwaGracza1 + "<h3 />";
+    infoSchowaj.style.display = "block";
 }
 
 rozpocznijGrePrzycisk.addEventListener("click", rozpocznijGre);
@@ -41,37 +51,55 @@ function odejmijZapalki(liczba) {
     if (liczbaZapalek > 0) {
         liczbaZapalekInput.value = liczbaZapalek;
         if (kolej % 2 == 0) {
-            kolejInfo.innerHTML = "Kolej gracza: <b>" + nazwaGracza1 + "<b />";
+            kolejInfo.innerHTML = "<h3>Kolej gracza: " + nazwaGracza1 + "<h3 />";
         } else {
-            kolejInfo.innerHTML = "Kolej gracza: <b>" + nazwaGracza2 + "<b />";
+            kolejInfo.innerHTML = "<h3>Kolej gracza: " + nazwaGracza2 + "<h3 />";
         }
     } else {
         if (kolej % 2 == 0) {
-            kolejInfo.innerHTML = "Przegrywa gracz: <b>" + nazwaGracza2 + "<b />";
-            liczbaZapalekInput.value = 0;
-            kolej--;
-            startInfo.style.display = "block";
-            rozpocznijGrePrzycisk.style.display = "inline";
+            kolejInfo.innerHTML = "<h3>Przegrywa gracz: " + nazwaGracza2 + "<h3 />";
         } else {
-            kolejInfo.innerHTML = "Przegrywa gracz: <b>" + nazwaGracza1 + "<b />";
-            liczbaZapalekInput.value = 0;
-            kolej--;
-            startInfo.style.display = "block";
-            rozpocznijGrePrzycisk.style.display = "inline";
+            kolejInfo.innerHTML = "<h3>Przegrywa gracz: " + nazwaGracza1 + "<h3 />";
         }
+        liczbaZapalekInput.value = 0;
+        kolej--;
+        startInfo.style.display = "block";
+        rozpocznijGrePrzycisk.style.display = "inline";
+        infoSchowaj.style.display = "none";
+        czyStart = false;
     }
 }
 
 jedna.addEventListener("click", function () {
-    odejmijZapalki(1);
+    if (czyStart) {
+        odejmijZapalki(1);
+    } else {
+        alert("Błąd!\nAby zabrać zapałki, rozpocznij grę.");
+    }
 });
 
 dwie.addEventListener("click", function () {
-    odejmijZapalki(2);
+    if (czyStart) {
+        if (liczbaZapalek >= 2) {
+            odejmijZapalki(2);
+        } else {
+            alert(`Błąd!\nNie możesz wziąć 2 zapałek, ponieważ do wzięcia zostało tylko ${liczbaZapalek}.`);
+        }
+    } else {
+        alert("Błąd!\nAby zabrać zapałki, rozpocznij grę.");
+    }
 });
 
 trzy.addEventListener("click", function () {
-    odejmijZapalki(3);
+    if (czyStart) {
+        if (liczbaZapalek >= 3) {
+            odejmijZapalki(3);
+        } else {
+            alert(`Błąd!\nNie możesz wziąć 3 zapałek, ponieważ do wzięcia zostało tylko ${liczbaZapalek}.`);
+        }
+    } else {
+        alert("Błąd!\nAby zabrać zapałki, rozpocznij grę.");
+    }
 });
 
 var i = 0;

@@ -78,3 +78,7 @@ input[type="button"]:hover {
     border: #fffbf1 solid 2px;
     display: none;
 }
+
+#infoSchowaj {
+    display: none;
+}
